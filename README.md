@@ -6,12 +6,13 @@ Dada una lista de instancias de la clase Videojuego, que cuentan con: título, g
 
 Escribir las funciones necesarias para resolver las siguientes cuestiones:
 
-a. Definir la clase Videojuego con su constructor;
+### a. Definir la clase Videojuego con su constructor;
 
 b. Crear dos árboles de acceso a los datos, definiendo la clase Árbol, clasificados:
 
 por título y año
 por clasificación, título y año;
+
 c. Realizar un recorrido inorden del árbol por título y año de lanzamiento;
 
 d. Realizar un recorrido por nivel de los árboles por clasificación;
