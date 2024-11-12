@@ -49,3 +49,5 @@ class Arbol:
         if clave < nodo_actual.clave:
             return self._buscar_recursivo(nodo_actual.izquierda, clave)
         return self._buscar_recursivo(nodo_actual.derecha, clave)
+    
+

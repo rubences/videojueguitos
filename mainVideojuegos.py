@@ -1,3 +1,7 @@
+from Videojuego import Videojuego
+from Arbol import Arbol
+
+
 class Videojuego:
     def __init__(self, titulo, genero, año, duracion, clasificacion, desarrollador):
         self.titulo = titulo
