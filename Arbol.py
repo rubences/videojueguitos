@@ -1,4 +1,4 @@
-import
+from NodoArbol import NodoArbol
 
 class Arbol:
     def __init__(self):
