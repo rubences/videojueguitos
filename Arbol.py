@@ -63,16 +63,16 @@ class Arbol:
             nodo_actual.derecha = self._eliminar_recursivo(nodo_actual.derecha, nodo_actual.clave)
         return nodo_actual
     
-    def modificar(self, clave, valor):
-        self.modificar_recursivo(self.raiz, clave, valor)
+    def modificar(self, clave, nuevo_clave, valor):
+        self.modificar_recursivo(self.raiz, clave, nuevo_clave, valor)
         
-    def modificar_recursivo(self, nodo_actual, clave, valor):
+    def modificar_recursivo(self, nodo_actual, clave, nuevo_clave, valor):
         if nodo_actual is None:
             raise KeyError("La clave no existe")
         if clave < nodo_actual.clave:
-            self.modificar_recursivo(nodo_actual.izquierda, clave, valor)
+            self.modificar_recursivo(nodo_actual.izquierda, clave, nuevo_clave, valor)
         elif clave > nodo_actual.clave:
-            self.modificar_recursivo(nodo_actual.derecha, clave, valor)
+            self.modificar_recursivo(nodo_actual.derecha, clave, nuevo_clave, valor)
         else:
             nodo_actual.valor = valor
         

@@ -77,3 +77,30 @@ for autor, libros_autor in indice_autor.items():
     print(f"\nAutor: {autor}")
     for libro in libros_autor:
         print(libro.titulo)
+
+# Elimiar un libro del árbol por título y año
+print("\nEliminando 'El nombre de la rosa' del árbol por título y año:")
+arbol_titulo_año.eliminar(("El nombre de la rosa", 1980))
+arbol_titulo_año.inorden()
+
+# Modificar un libro del árbol por título y año
+print("\nModificando 'El retrato de Dorian Gray' del árbol por título y año:")
+arbol_titulo_año.modificar(("El retrato de Dorian Gray", 1890), "El retrato de Dorian Gray", 1891)
+arbol_titulo_año.inorden()
+
+# Mostrar libros con más de 500 páginas
+print("\nLibros con más de 500 páginas:")
+for libro in libros:
+    if libro.paginas > 500:
+        print(libro)
+
+# Ordenar libros con postorden
+print("\nOrdenar libros con postorden:")
+arbol_titulo_año.postorden()
+
+# Mostrar libros del género "Fantasía" o "Novela"
+print("\nLibros del género 'Fantasía' o 'Novela':")
+for libro in libros:
+    if libro.genero in ["Fantasía", "Novela"]:
+        print(libro)
+        

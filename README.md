@@ -91,3 +91,46 @@ libros = [
     Libro("La Odisea", "Homero", -800, 344, "Poesía", "Desconocida"), 
     Libro("El nombre de la rosa", "Umberto Eco", 1980, 536, "Novela", "Bompiani") 
 ]
+
+
+# Desarrollo de índices mediante árboles ordenados de búsqueda en el universo de Juego de Tronos
+
+
+Dada una lista de instancias de la clase Personaje, que cuentan con: nombre, casa (Stark, Lannister, Targaryen, etc.), edad, estatus (vivo, muerto), género (masculino, femenino) y  título (Lord, Lady, Rey, etc.),  escribir las funciones necesarias para resolver las siguientes cuestiones:
+
+a. Definir la clase Personaje con su constructor;
+
+b. Crear dos árboles de acceso a los datos, definiendo la clase Árbol, clasificados:
+
+por nombre y edad
+por casa, nombre y edad;
+c. Realizar un recorrido inorden del árbol por nombre y edad;
+
+d. Realizar un recorrido por nivel de los árboles por casa;
+
+e. Mostrar toda la información de "Daenerys Targaryen" y "Jon Snow";
+
+f. Mostrar todos los personajes de la casa “Stark”;
+
+g. Listar todos los personajes que tienen más de 30 años;
+
+h. Mostrar todos los personajes con estatus “vivo”;
+
+i. Listar los personajes que comienzan con la letra “A” y los que tienen un título que contiene la palabra “Rey”.
+
+j. Crear un índice por género, que contenga para cada nodo del árbol el género y la lista de todos los personajes del mismo.
+
+La lista de personajes puede ser la siguiente:
+
+Python
+personajes = [
+    Personaje("Daenerys Targaryen", "Targaryen", 25, "vivo", "femenino", "Reina"),
+    Personaje("Jon Snow", "Stark", 28, "vivo", "masculino", "Rey"),
+    Personaje("Tyrion Lannister", "Lannister", 40, "vivo", "masculino", "Mano de la Reina"),
+    Personaje("Cersei Lannister", "Lannister", 42, "muerto", "femenino", "Reina"),
+    Personaje("Arya Stark", "Stark", 18, "vivo", "femenino", "Ninguno"),
+    Personaje("Sansa Stark", "Stark", 20, "vivo", "femenino", "Lady de Winterfell"),
+    Personaje("Jaime Lannister", "Lannister", 42, "muerto", "masculino", "Lord Comandante de la Guardia Real"),
+    Personaje("Bran Stark", "Stark", 16, "vivo", "masculino", "Rey de los Seis Reinos"), 
+    Personaje("Theon Greyjoy", "Greyjoy", 26, "muerto", "masculino", "Príncipe de las Islas de Hierro")
+]
