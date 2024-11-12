@@ -4,6 +4,21 @@ class Arbol:
     def __init__(self):
         self.raiz = None
 
+    def esta_vacio(self):
+        return self.raiz is None
+    
+    def obtener(self, clave):
+        nodo = self.buscar(clave)
+        return nodo.valor if nodo else None
+    
+    def reemplazar(self, clave, valor):
+        nodo = self.buscar(clave)
+        if nodo:
+            nodo.valor = valor
+        else:
+            raise KeyError("La clave no existe")
+        
+
     def insertar(self, clave, valor):
         self.raiz = self._insertar_recursivo(self.raiz, clave, valor)
 
@@ -22,12 +37,30 @@ class Arbol:
     def inorden(self):
         self._inorden_recursivo(self.raiz)
 
+    def preorden(self):
+        self._preorden_recursivo(self.raiz)
+
+    def postorden(self):
+        self._postorden_recursivo(self.raiz)
+
     def _inorden_recursivo(self, nodo_actual):
         if nodo_actual:
             self._inorden_recursivo(nodo_actual.izquierda)
             print(nodo_actual.valor)
             self._inorden_recursivo(nodo_actual.derecha)
 
+    def _preorden_recursivo(self, nodo_actual):
+        if nodo_actual:
+            print(nodo_actual.valor)
+            self._preorden_recursivo(nodo_actual.izquierda)
+            self._preorden_recursivo(nodo_actual.derecha)
+
+    def _postorden_recursivo(self, nodo_actual):
+        if nodo_actual:
+            self._postorden_recursivo(nodo_actual.izquierda)
+            self._postorden_recursivo(nodo_actual.derecha)
+            print(nodo_actual.valor)
+    
     def por_nivel(self):
         if self.raiz is None:
             return
@@ -68,6 +101,20 @@ class Arbol:
             nodo_actual.clave = self._minimo(nodo_actual.derecha)
             nodo_actual.derecha = self._eliminar_recursivo(nodo_actual.derecha, nodo_actual.clave)
         return nodo_actual
+    
+    def modificar(self, clave, valor):
+        nodo = self.buscar(clave)
+        if nodo:
+            nodo.valor = valor
+        else:
+            raise KeyError("La clave no existe")
+        
+  
+    def _maximo(self, nodo_actual):
+        while nodo_actual.derecha:
+            nodo_actual = nodo_actual.derecha
+        return nodo_actual.clave
+    
     
     def _minimo(self, nodo_actual):
         while nodo_actual.izquierda:
