@@ -27,6 +27,12 @@ for libro in libros:
     clave = (libro.genero, libro.titulo, libro.año)
     arbol_genero_titulo_año.insertar(clave, libro)
 
+# Crear el arbol por editorial, título y año
+arbol_editorial_titulo_año = Arbol()
+for libro in libros:
+    clave = (libro.editorial, libro.titulo, libro.año)
+    arbol_editorial_titulo_año.insertar(clave, libro)
+
 # Recorrido inorden del árbol por título y año
 print("Recorrido inorden del árbol por título y año:")
 arbol_titulo_año.inorden()
@@ -34,6 +40,10 @@ arbol_titulo_año.inorden()
 # Recorrido por nivel del árbol por género
 print("\nRecorrido por nivel del árbol por género:")
 arbol_genero_titulo_año.por_nivel()
+
+# Recorrido por nivel del árbol por editorial
+print("\nRecorrido por nivel del árbol por editorial:")
+arbol_editorial_titulo_año.por_nivel()
 
 # Mostrar información de libros específicos
 print("\nInformación de libros específicos:")

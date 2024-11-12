@@ -29,6 +29,29 @@ for juego in videojuegos:
         clave = (clasificacion, juego.titulo, juego.año)
         arbol_clasificacion_titulo_año.insertar(clave, juego)
 
+# Crear el arbol por desarrollador, título y año
+arbol_desarrollador_titulo_año = Arbol()
+for juego in videojuegos:
+    for desarrollador in juego.desarrollador:
+        clave = (desarrollador, juego.titulo, juego.año)
+        arbol_desarrollador_titulo_año.insertar(clave, juego)
+
+# Crear el arbol por género, año y desarrollador
+arbol_genero_año_desarrollador = Arbol()
+for juego in videojuegos:
+    for genero in juego.genero:
+        clave = (genero, juego.año, juego.desarrollador)
+        arbol_genero_año_desarrollador.insertar(clave, juego)
+
+# Crear el arbol por clasificación, género y duración
+arbol_clasificacion_genero_duracion = Arbol()
+for juego in videojuegos:
+    for clasificacion in juego.clasificacion:
+        for genero in juego.genero:
+            clave = (clasificacion, genero, juego.duracion)
+            arbol_clasificacion_genero_duracion.insertar(clave, juego)
+
+
 # Recorrido inorden del árbol por título y año
 print("Recorrido inorden del árbol por título y año:")
 arbol_titulo_año.inorden()
@@ -36,6 +59,18 @@ arbol_titulo_año.inorden()
 # Recorrido por nivel del árbol por clasificación
 print("\nRecorrido por nivel del árbol por clasificación:")
 arbol_clasificacion_titulo_año.por_nivel()
+
+# Recorrido por nivel del árbol por desarrollador
+print("\nRecorrido por nivel del árbol por desarrollador:")
+arbol_desarrollador_titulo_año.por_nivel()
+
+# Recorrido por nivel del árbol por género
+print("\nRecorrido por nivel del árbol por género:")
+arbol_genero_año_desarrollador.por_nivel()
+
+# Recorrido por nivel del árbol por clasificación y género
+print("\nRecorrido por nivel del árbol por clasificación y género:")
+arbol_clasificacion_genero_duracion.por_nivel()
 
 # Mostrar información de juegos específicos
 print("\nInformación de juegos específicos:")
