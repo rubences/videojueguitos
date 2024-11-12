@@ -50,4 +50,30 @@ class Arbol:
             return self._buscar_recursivo(nodo_actual.izquierda, clave)
         return self._buscar_recursivo(nodo_actual.derecha, clave)
     
+    def eliminar(self, clave):
+        self.raiz = self._eliminar_recursivo(self.raiz, clave)
+
+    def _eliminar_recursivo(self, nodo_actual, clave):
+        if nodo_actual is None:
+            return nodo_actual
+        if clave < nodo_actual.clave:
+            nodo_actual.izquierda = self._eliminar_recursivo(nodo_actual.izquierda, clave)
+        elif clave > nodo_actual.clave:
+            nodo_actual.derecha = self._eliminar_recursivo(nodo_actual.derecha, clave)
+        else:
+            if nodo_actual.izquierda is None:
+                return nodo_actual.derecha
+            if nodo_actual.derecha is None:
+                return nodo_actual.izquierda
+            nodo_actual.clave = self._minimo(nodo_actual.derecha)
+            nodo_actual.derecha = self._eliminar_recursivo(nodo_actual.derecha, nodo_actual.clave)
+        return nodo_actual
+    
+    def _minimo(self, nodo_actual):
+        while nodo_actual.izquierda:
+            nodo_actual = nodo_actual.izquierda
+        return nodo_actual.clave
+    
+
+    
 
