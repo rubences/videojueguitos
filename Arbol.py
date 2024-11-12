@@ -18,7 +18,6 @@ class Arbol:
         else:
             raise KeyError("La clave no existe")
         
-
     def insertar(self, clave, valor):
         self.raiz = self._insertar_recursivo(self.raiz, clave, valor)
 
@@ -34,45 +33,7 @@ class Arbol:
             nodo_actual.valor = valor
         return nodo_actual
 
-    def inorden(self):
-        self._inorden_recursivo(self.raiz)
-
-    def preorden(self):
-        self._preorden_recursivo(self.raiz)
-
-    def postorden(self):
-        self._postorden_recursivo(self.raiz)
-
-    def _inorden_recursivo(self, nodo_actual):
-        if nodo_actual:
-            self._inorden_recursivo(nodo_actual.izquierda)
-            print(nodo_actual.valor)
-            self._inorden_recursivo(nodo_actual.derecha)
-
-    def _preorden_recursivo(self, nodo_actual):
-        if nodo_actual:
-            print(nodo_actual.valor)
-            self._preorden_recursivo(nodo_actual.izquierda)
-            self._preorden_recursivo(nodo_actual.derecha)
-
-    def _postorden_recursivo(self, nodo_actual):
-        if nodo_actual:
-            self._postorden_recursivo(nodo_actual.izquierda)
-            self._postorden_recursivo(nodo_actual.derecha)
-            print(nodo_actual.valor)
-    
-    def por_nivel(self):
-        if self.raiz is None:
-            return
-        cola = [self.raiz]
-        while cola:
-            nodo_actual = cola.pop(0)
-            print(nodo_actual.valor)
-            if nodo_actual.izquierda:
-                cola.append(nodo_actual.izquierda)
-            if nodo_actual.derecha:
-                cola.append(nodo_actual.derecha)
-
+  
     def buscar(self, clave):
         return self._buscar_recursivo(self.raiz, clave)
 
@@ -103,11 +64,17 @@ class Arbol:
         return nodo_actual
     
     def modificar(self, clave, valor):
-        nodo = self.buscar(clave)
-        if nodo:
-            nodo.valor = valor
-        else:
+        self.modificar_recursivo(self.raiz, clave, valor)
+        
+    def modificar_recursivo(self, nodo_actual, clave, valor):
+        if nodo_actual is None:
             raise KeyError("La clave no existe")
+        if clave < nodo_actual.clave:
+            self.modificar_recursivo(nodo_actual.izquierda, clave, valor)
+        elif clave > nodo_actual.clave:
+            self.modificar_recursivo(nodo_actual.derecha, clave, valor)
+        else:
+            nodo_actual.valor = valor
         
   
     def _maximo(self, nodo_actual):
@@ -121,6 +88,45 @@ class Arbol:
             nodo_actual = nodo_actual.izquierda
         return nodo_actual.clave
     
+
+    def inorden(self):
+        self._inorden_recursivo(self.raiz)
+
+    def _inorden_recursivo(self, nodo_actual):
+        if nodo_actual:
+            self._inorden_recursivo(nodo_actual.izquierda)
+            print(nodo_actual.valor)
+            self._inorden_recursivo(nodo_actual.derecha)
+
+    def preorden(self):
+        self._preorden_recursivo(self.raiz)
+
+    def _preorden_recursivo(self, nodo_actual):
+        if nodo_actual:
+            print(nodo_actual.valor)
+            self._preorden_recursivo(nodo_actual.izquierda)
+            self._preorden_recursivo(nodo_actual.derecha)
+
+    def postorden(self):
+        self._postorden_recursivo(self.raiz)
+
+    def _postorden_recursivo(self, nodo_actual):
+        if nodo_actual:
+            self._postorden_recursivo(nodo_actual.izquierda)
+            self._postorden_recursivo(nodo_actual.derecha)
+            print(nodo_actual.valor)
+    
+    def por_nivel(self):
+        if self.raiz is None:
+            return
+        cola = [self.raiz]
+        while cola:
+            nodo_actual = cola.pop(0)
+            print(nodo_actual.valor)
+            if nodo_actual.izquierda:
+                cola.append(nodo_actual.izquierda)
+            if nodo_actual.derecha:
+                cola.append(nodo_actual.derecha)
 
     
 
