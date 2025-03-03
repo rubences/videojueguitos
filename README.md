@@ -1,5 +1,7 @@
 # videojueguitos
 
+https://github.com/rubences/videojueguitos.git
+
 ## Desarrollo de índices mediante árboles ordenados de búsqueda
 
 Dada una lista de instancias de la clase Videojuego, que cuentan con: título, género, año de lanzamiento, duración, clasificación (E, T, M) y desarrollador, los últimos tres atributos pueden tener más de un valor. 
